@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Decimal from "decimal.js";
+import './Calculator.css';
 
-const Calculator: React.FC = () => {
+interface CalculatorProps {
+    theme: string;
+}
+
+const Calculator: React.FC<CalculatorProps> = ({ theme }) => {
     const [result, setResult] = useState<number | null>(null);
     const [inputValue, setInputValue] = useState<string>("0");
     const [currentValue, setCurrentValue] = useState<string>("");
@@ -82,43 +87,46 @@ const Calculator: React.FC = () => {
     };
 
     return (
-        <div>
-            <h1>Calc</h1>
-            <div>
-                {result !== null ? (
-                    <input type="text" value={result} readOnly />
-                ) : (
-                    <input type="text" value={inputValue} readOnly />
-                )}
-            </div>
-            <div>
-                <button onClick={() => handleNumberClick(7)}>7</button>
-                <button onClick={() => handleNumberClick(8)}>8</button>
-                <button onClick={() => handleNumberClick(9)}>9</button>
-                <button onClick={() => handleDeleteClick()}>Del</button>
-            </div>
-            <div>
-                <button onClick={() => handleNumberClick(4)}>4</button>
-                <button onClick={() => handleNumberClick(5)}>5</button>
-                <button onClick={() => handleNumberClick(6)}>6</button>
-                <button onClick={() => handleOperatorClick("+")}>+</button>
-            </div>
-            <div>
-                <button onClick={() => handleNumberClick(1)}>1</button>
-                <button onClick={() => handleNumberClick(2)}>2</button>
-                <button onClick={() => handleNumberClick(3)}>3</button>
-                <button onClick={() => handleOperatorClick("-")}>-</button>
-            </div>
-            <div>
-                <button onClick={() => handleDecimalClick()}>.</button>
-                <button onClick={() => handleNumberClick(0)}>0</button>
-                <button onClick={() => handleOperatorClick("/")}>/</button>
-                <button onClick={() => handleOperatorClick("*")}>x</button>
-            </div>
-            <div>
-                <button onClick={handleClearClick}>Reset</button>
-                <button onClick={() => handleEqualsClick()}>=</button>
-            </div>
+        <div className={`calc ${theme}`}>
+            <section className="container">
+                <div>
+                    {result !== null ? (
+                        <input className={`result ${theme}`}  type="text" value={result} readOnly />
+                    ) : (
+                        <input className={`result ${theme}`} type="text" value={inputValue} readOnly />
+                    )}
+                </div>
+                <article className={`butoes ${theme}`}>
+                    <div>
+                        <button onClick={() => handleNumberClick(7)}>7</button>
+                        <button onClick={() => handleNumberClick(8)}>8</button>
+                        <button onClick={() => handleNumberClick(9)}>9</button>
+                        <button className="del" onClick={() => handleDeleteClick()}>Del</button>
+                    </div>
+                    <div>
+                        <button onClick={() => handleNumberClick(4)}>4</button>
+                        <button onClick={() => handleNumberClick(5)}>5</button>
+                        <button onClick={() => handleNumberClick(6)}>6</button>
+                        <button onClick={() => handleOperatorClick("+")}>+</button>
+                    </div>
+                    <div>
+                        <button onClick={() => handleNumberClick(1)}>1</button>
+                        <button onClick={() => handleNumberClick(2)}>2</button>
+                        <button onClick={() => handleNumberClick(3)}>3</button>
+                        <button onClick={() => handleOperatorClick("-")}>-</button>
+                    </div>
+                    <div>
+                        <button onClick={() => handleDecimalClick()}>.</button>
+                        <button onClick={() => handleNumberClick(0)}>0</button>
+                        <button onClick={() => handleOperatorClick("/")}>/</button>
+                        <button onClick={() => handleOperatorClick("*")}>x</button>
+                    </div>
+                    <div>
+                        <button className="reset" onClick={handleClearClick}>Reset</button>
+                        <button className="igual" onClick={() => handleEqualsClick()}>=</button>
+                    </div>
+                </article>
+            </section>
         </div>
     );
 };

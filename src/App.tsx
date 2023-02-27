@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, purpleTheme } from './Themes/themes';
 import { GlobalStyles } from './styles/GlobalStyles';
 import Calculator from './Calculator';
+import './App.css';
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark' | 'purple'>('light');
@@ -27,20 +28,25 @@ const App: React.FC = () => {
             : purpleTheme
       }>
       <GlobalStyles />
-      <div>
-        {themes.map((themeOption) => (
-          <label key={themeOption.id}>
-            <input
-              type="checkbox"
-              value={themeOption.value}
-              checked={theme === themeOption.value}
-              onChange={handleThemeChange}
-            />
-            {themeOption.name}
-          </label>
-        ))}
-      </div>
-      <Calculator />
+      <main className='principal container'>
+        <h1>Calc</h1>
+        <div className="switch">
+          {themes.map((themeOption) => (
+            <label key={themeOption.id} >
+              <p>{themeOption.id}</p>
+              <input
+                type="checkbox"
+                value={themeOption.value}
+                checked={theme === themeOption.value}
+                onChange={handleThemeChange}
+                className="theme-switch"
+              />
+              <span></span>
+            </label>
+          ))}
+        </div>
+      </main>
+      <Calculator theme={theme} />
     </ThemeProvider>
   );
 };

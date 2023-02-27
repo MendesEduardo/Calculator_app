@@ -7,17 +7,17 @@ declare module 'styled-components' {
     }
 }
 
-export const lightTheme: DefaultTheme = {
-    body: '#FFFFFF',
-    text: '#5c00b1',
+export const darkTheme: DefaultTheme = {
+    body: '#3B4664',
+    text: '#FEFFFD',
 };
 
-export const darkTheme: DefaultTheme = {
-    body: '#000',
-    text: '#FFFFFF',
+export const lightTheme: DefaultTheme = {
+    body: '#E6E6E6',
+    text: '#34342A',
 };
 
 export const purpleTheme = {
-    body: '#5c00b1',
-    text: '#000000',
+    body: '#17062A',
+    text: '#FFE43E',
 };
