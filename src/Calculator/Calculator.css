@@ -65,6 +65,7 @@
     color: #FFF;
 }
 
+/* LIGHT COLOR */
 .light .butoes {
     background-color: #D3CDCD;
 }
@@ -85,6 +86,7 @@
     color: #FFF;
 }
 
+/* PURPLE COLOR */
 .purple .result,
 .purple .butoes {
     background-color: #1E0836;
@@ -107,4 +109,23 @@
 .purple .butoes .igual {
     background-color: #00DECF;
     color: #000;
+}
+
+@media (max-width:460px) {
+    .calc {
+        padding: 1em 0;
+    }
+
+    .container {
+        width: 340px;
+    }
+
+    .butoes button {
+        width: 60px;
+    }
+
+    .butoes .reset,
+    .butoes .igual {
+        width: 139px;
+    }
 }
